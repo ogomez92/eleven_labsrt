@@ -1,0 +1,8 @@
+ask if you want to convert x characters and check elevenlabs API first, tell user how many remaining
+check if API key is not available in .env
+don't forget to cache all text into some json file.
+Files are saved as short uuids and cached in a json
+list voices will display voices and exit.
+
+api docs
+https://github.com/elevenlabs/elevenlabs-python
