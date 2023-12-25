@@ -6,3 +6,5 @@ list voices will display voices and exit.
 
 api docs
 https://github.com/elevenlabs/elevenlabs-python
+
+show progress %1 out of %2 subtitles converted.
