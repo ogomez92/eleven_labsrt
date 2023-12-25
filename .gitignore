@@ -2,3 +2,5 @@
 __pycache__
 *.srt
 *.json
+*.mp3
+*.wav
