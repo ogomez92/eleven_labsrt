@@ -10,6 +10,7 @@ def get_args():
     parser.add_argument('-v', '--voice', help='Voice to use when converting subtitles. Must be a valid voice on the ElevenLabs user account whose API key is used', type=str)
     parser.add_argument('-s', '--prefer-speedup', help='Prefer speeding up audio to fit overlapping subtitles. If neither --prefer-speedup nor --prefer-queue is specified, queue is used.', action='store_true')
     parser.add_argument('-q', '--prefer-queue', help='Place overlapping subtitles sequentially. If this nor --prefer-speedup is specified, the app will use this by default.', action='store_true')
+    parser.add_argument('-o', '--output-file', help='Output wave file to generate (use ffmpeg to save to mp3).', type=str)
 
     # Return the parsed arguments
     return parser.parse_args()
