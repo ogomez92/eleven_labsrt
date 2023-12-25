@@ -8,6 +8,7 @@ from decouple import config
 class ElevenLabsService:
     api_key = ""
     voices = [];
+    voice = None
 
     def __init__(self) -> None:
         self.api_key = config("ELEVENLABS_API_KEY")
@@ -31,8 +32,16 @@ class ElevenLabsService:
         voices = elevenlabs.voices()
         self.voices = list(filter(lambda x: x.category == "cloned", voices))
         
-    # def set_voice(voice_name):
-        # self.populate_voice_list()
+    def set_voice(self, voice_name):
+        self.populate_voice_list()
+
+        for voice in self.voices:
+            if voice.name == voice_name:
+                self.voice = voice
+                return
+
+        print(f"Invalid voice specified or not found in your ElevenLabsAccount. The voice you tried to use was: {voice_name}. Please make sure this voice is available in your account using the API key you provided in the env file.")
+        exit(1)
 
     # def generate_subtitle(text):
         # use caching

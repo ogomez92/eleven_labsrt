@@ -9,8 +9,12 @@ def main():
 
     if args.list_voices:
         elevenLabsService.list_voices()
+        exit(0)
+    
+    if args.voice:
+        elevenLabsService.set_voice(args.voice)
 
-    elif args.input_file:
+    if args.input_file:
         subtitleHelper = SubtitleHelper(args.input_file)
         strings_to_generate = subtitleHelper.get_strings()
 
