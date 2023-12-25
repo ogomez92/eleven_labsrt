@@ -31,9 +31,9 @@ class ElevenLabsService:
         voices = elevenlabs.voices()
         self.voices = list(filter(lambda x: x.category == "cloned", voices))
         
-    def set_voice(voice_name):
-        self.populate_voice_list()
+    # def set_voice(voice_name):
+        # self.populate_voice_list()
 
-    def generate_subtitle(text):
+    # def generate_subtitle(text):
         # use caching
     
