@@ -8,3 +8,12 @@ api docs
 https://github.com/elevenlabs/elevenlabs-python
 
 show progress %1 out of %2 subtitles converted.
+
+generate audio file
+add silence
+add file
+check  if next subtitle has time less than audio duration
+if so, set time to audio duration
+add
+and so on
+add a way to specify which subtitles to regenerate like if we make corrections.

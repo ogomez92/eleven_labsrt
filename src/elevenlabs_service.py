@@ -43,6 +43,9 @@ class ElevenLabsService:
         print(f"Invalid voice specified or not found in your ElevenLabsAccount. The voice you tried to use was: {voice_name}. Please make sure this voice is available in your account using the API key you provided in the env file.")
         exit(1)
 
-    # def generate_subtitle(text):
-        # use caching
-    
+    def generate_audio(self, text):
+        audio = elevenlabs.generate(text, voice = self.voice, model="eleven_multilingual_v2")
+        
+        with open("temp.mp3", "wb") as f:
+            f.write(audio)
+

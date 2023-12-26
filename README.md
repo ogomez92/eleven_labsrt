@@ -4,6 +4,26 @@ This project helps you generate audio files using .srt (subtitle) files and [Ele
 
 The idea is that it will first generate (and cache) all strings in your subtitles and then mix in the results in an audio file, respecting times as much as possible, for example if two subtitles overlap it will append them next to each other, never stripping any parts of the audio.
 
+**IMPORTANT NOTE**: This project requires ffmpeg. Please follow the installation instructions for your operating system:
+
+on mac with homebrew:
+
+```bash
+brew install ffmpeg
+```
+
+on Linux (using aptitude):
+
+```bash
+apt install ffmpeg
+```
+
+On windows you have several options like winget or chocolately. the easiest one is with winget if you have Windows 10 or 11.
+
+```shell
+winget install --id=Gyan.FFmpeg -e
+```
+
 ## Usage
 
 You will first need to obtain an ElevenLabs API key by registering for an account and paying for one of their plans (otherwise you are limited to a small number of characters).
