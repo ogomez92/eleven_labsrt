@@ -24,7 +24,7 @@ On windows you have several options like winget or chocolately. the easiest one 
 winget install --id=Gyan.FFmpeg -e
 ```
 
-## Usage
+## Installation
 
 You will first need to obtain an ElevenLabs API key by registering for an account and paying for one of their plans (otherwise you are limited to a small number of characters).
 
