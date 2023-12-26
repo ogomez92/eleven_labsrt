@@ -1,2 +1,4 @@
-python-decouple
+pydub
 elevenlabs
+srt
+python-decouple

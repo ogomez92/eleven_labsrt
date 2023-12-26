@@ -26,7 +26,12 @@ winget install --id=Gyan.FFmpeg -e
 
 ## Installation
 
-You will first need to obtain an ElevenLabs API key by registering for an account and paying for one of their plans (otherwise you are limited to a small number of characters).
+First, install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+You will then need to obtain an ElevenLabs API key by registering for an account and paying for one of their plans (otherwise you are limited to a small number of characters).
 
 To get your API key just go into the user dropdown and select `Profile`.
 

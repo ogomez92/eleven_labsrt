@@ -17,3 +17,4 @@ if so, set time to audio duration
 add
 and so on
 add a way to specify which subtitles to regenerate like if we make corrections.
+provide a warning when an overlap is found in audiomanager
