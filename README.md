@@ -64,3 +64,17 @@ This application accepts several command line arguments to customize its behavio
 - `-q`, `--prefer-queue`: This flag, when specified, places overlapping subtitles sequentially. If neither this nor `--prefer-speedup` is specified, the app will use this by default.
 
 - [WIP]`-s`, `--prefer-speedup`: This flag, when specified, prefers speeding up audio to fit overlapping subtitles. If neither `--prefer-speedup` nor `--prefer-queue` is specified, queue is used.
+
+## Generating only a set of subtitles
+
+You can create a file called `include.txt` with the following format:
+
+```txt
+1
+2
+3
+```
+
+This is lines containing only single numbers which are subtitle indexes.
+
+when you open this tool and this file is detected, you will be asked if you want to use this include file or generate the entire subtitle list.

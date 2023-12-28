@@ -1,9 +1,12 @@
 import srt
 import datetime
+import os
 
 class SubtitleHelper:
     filename = ""
     subtitle_queue = []
+    included_indexes = []
+    include_all = True
 
     def __init__(self, filename):
         self.filename = filename
@@ -12,12 +15,27 @@ class SubtitleHelper:
             with open(filename, "r", encoding = 'utf8') as f:
                 contents = srt.parse(f.read())
 
+                if os.path.isfile("include.txt"):
+                    print(f"An include.txt file has been detected. Do you want to include only the indexes in this file?")
+                    if input() == "y":
+                        self.include_all = False
+                        with open("include.txt", "r") as include_file:
+                            for line in include_file:
+                                self.included_indexes.append(int(line))
+
                 # Build a queue of subtitles in a dictionary with string and time. Time is in milliseconds always so convert the timedelta to milliseconds
                 for item in contents:
-                    self.subtitle_queue.append({
-                        "content": item.content,
-                        "start_time": item.start.total_seconds() * 1000,
-                    })
+                    if self.include_all:
+                        self.subtitle_queue.append({
+                            "content": item.content,
+                            "start_time": item.start.total_seconds() * 1000,
+                        })
+                    else:
+                        if item.index in self.included_indexes:
+                            self.subtitle_queue.append({
+                            "content": item.content,
+                            "start_time": item.start.total_seconds() * 1000,
+                        })
 
         except Exception as e:
             print(f"Error: Could not open file {filename}")
