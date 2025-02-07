@@ -29,7 +29,7 @@ class ElevenLabsService:
 
     def populate_voice_list(self):
         voices = self.elevenlabs.voices.get_all()
-        self.voices = list(filter(lambda x: hasattr(x, 'category') and x.category == "cloned", list(voices)[0][1]))
+        self.voices = list(filter(lambda x: hasattr(x, 'category') and (x.category == "cloned" or x.category == "premade"), list(voices)[0][1]))
 
 
         
