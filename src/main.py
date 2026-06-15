@@ -1,20 +1,26 @@
 from cli_parser import get_args
-from elevenlabs_service import ElevenLabsService
 from audio_manager import AudioManager
 from subtitle_helper import SubtitleHelper
 from vocal_cache import VocalCache
 
+def make_tts_service(provider):
+    if provider == "60db":
+        from sixtydb_service import SixtyDBService
+        return SixtyDBService()
+    from elevenlabs_service import ElevenLabsService
+    return ElevenLabsService()
+
 def main():
     # Parse command line arguments
     args = get_args()
-    elevenLabsService = ElevenLabsService()
+    ttsService = make_tts_service(args.provider)
 
     if args.list_voices:
-        elevenLabsService.list_voices()
+        ttsService.list_voices()
         exit(0)
-    
+
     if args.voice:
-        elevenLabsService.set_voice(args.voice)
+        ttsService.set_voice(args.voice)
 
     if not args.input_file:
         print("No input file specified, exiting...")
@@ -30,7 +36,7 @@ def main():
     if args.debug:
         print(f"Successfully retrieved {len(strings_to_generate)} strings.")
 
-    vocalCache = VocalCache(args.voice)
+    vocalCache = VocalCache(args.voice, args.provider)
     cached_strings = vocalCache.get_cached_strings()
 
     if args.debug:
@@ -49,7 +55,7 @@ def main():
             print("Aborting...")
             exit()
 
-    audioManager = AudioManager(subtitleHelper, vocalCache, elevenLabsService)
+    audioManager = AudioManager(subtitleHelper, vocalCache, ttsService)
     audioManager.generate_audio_files()
     audioManager.create_mix()
 

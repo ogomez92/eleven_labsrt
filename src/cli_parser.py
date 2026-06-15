@@ -4,7 +4,8 @@ def get_args():
     parser = argparse.ArgumentParser(description='Convert SRT subtitle entries to audio using ElevenLabs and sync them.')
 
     # Define possible arguments
-    parser.add_argument('-l', '--list-voices', help='List available voices from ElevenLabs. specifying this action does not convert anything', action='store_true')
+    parser.add_argument('-p', '--provider', help='TTS provider to use. Default is elevenlabs.', choices=['elevenlabs', '60db'], default='elevenlabs')
+    parser.add_argument('-l', '--list-voices', help='List available voices from the selected provider. specifying this action does not convert anything', action='store_true')
     parser.add_argument('-i', '--input-file', help='Input SRT file to be processed.', type=str)
     parser.add_argument('-d', '--debug', help='Debug/verbose mode.', action='store_true')
     parser.add_argument('-v', '--voice', help='Voice to use when converting subtitles. Must be a valid voice on the ElevenLabs user account whose API key is used', type=str)
