@@ -1,5 +1,4 @@
 from cli_parser import get_args
-from elevenlabs_service import ElevenLabsService
 import pydub
 
 class AudioManager:
@@ -7,12 +6,12 @@ class AudioManager:
     strings = None
     vocal_cache = None
     args = get_args()
-    elevenLabsService = None
+    tts_service = None
 
-    def __init__(self, subtitles, cache, elevenlabsService):
+    def __init__(self, subtitles, cache, tts_service):
         self.subtitles = subtitles;
         self.vocal_cache = cache
-        self.elevenLabsService = elevenlabsService
+        self.tts_service = tts_service
 
     def generate_audio_files(self):
         self.strings = self.subtitles.get_strings()
@@ -23,12 +22,12 @@ class AudioManager:
             if self.vocal_cache.get_vocal(string) is None:
                 try:
                     print(f"Generating vocal for text {string}...")
-                    self.elevenLabsService.generate_audio(string)
+                    self.tts_service.generate_audio(string)
                     counter += 1
                     print(f"Generated string {counter} of {len(self.strings)}")
 
                 except Exception as e:
-                    print(f"Error generating vocal with ElevenLabs for text {string}: {e}")
+                    print(f"Error generating vocal for text {string}: {e}")
                     print(e)
                     exit(1)
 

@@ -2,3 +2,4 @@ pydub
 elevenlabs
 srt
 python-decouple
+requests

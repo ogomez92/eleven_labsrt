@@ -7,11 +7,14 @@ class VocalCache:
     cache_directory = 'cache'
     voice = None
 
-    def __init__(self, voice_name):
+    def __init__(self, voice_name, provider="elevenlabs"):
         self.cache = {}
         self.voice = voice_name
-        self.cache_directory = os.path.join(self.cache_directory, voice_name)
-        self.cache_filename = f"{self.cache_filename}_{self.voice}.json"
+        self.provider = provider
+        # Namespace the cache by provider so identical voice names across
+        # providers never collide (cache/<provider>/<voice>/).
+        self.cache_directory = os.path.join(self.cache_directory, provider, voice_name)
+        self.cache_filename = f"{self.cache_filename}_{provider}_{self.voice}.json"
 
     def load_cache(self):
         if not os.path.exists(self.cache_filename):
